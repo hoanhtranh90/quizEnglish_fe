@@ -10,20 +10,26 @@ export default function CreateQues() {
     const [questionText,setQuestionText] = useState('');
     const [answerQuiz,setAnswerQuiz] = useState('');
     const [quizChoices,setQuizChoices] = useState([]);
-    const handleSubmit = () => {
-        const datax = [];
+    const datax = [];
+    const datax1=datax.sort((a, b) => (a.answerText > b.answerText) ? 1 : -1)
+    const pushdata = () => {
         datax.push({answerText:nameA,correct:0});
         datax.push({answerText:nameB,correct:0});
         datax.push({answerText:nameC,correct:0});
         datax.push({answerText:nameD,correct:0});
-        datax[correctt].correct = 1;
-        setQuizChoices([datax])
+    }
+    const handleSubmit = () => {
+        pushdata();
+        setQuizChoices([datax1])
+        console.log(datax1)
+        datax1[correctt-1].correct = 1;
         var data = {
             questionText: questionText,
             answerQuiz : answerQuiz,
             quizChoices: quizChoices[0]
         }
-
+        console.log(correctt)
+        console.log(data)
         axios.post('https://quiz-demo-eng.herokuapp.com/quiz',data)
         .then(res => console.log(res))
         
