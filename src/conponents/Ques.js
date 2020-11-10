@@ -104,7 +104,6 @@ export default function Ques() {
 			
 				// setQuestions(questions.concat(res.data)) //dung de noi data co san
 				setQuestions(res.data) // get all data tu api
-				console.log(res.data)
 
 		})
 	},[])

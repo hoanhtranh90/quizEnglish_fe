@@ -2,9 +2,32 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 
 export default function CreateQues() {
-    const data = [];
+    const [nameA,setNameA] = useState('');
+    const [nameB,setNameB] = useState('');
+    const [nameC,setNameC] = useState('');
+    const [nameD,setNameD] = useState('');
+    const [correctt,setCorrectt] = useState('');
+    const [questionText,setQuestionText] = useState('');
+    const [answerQuiz,setAnswerQuiz] = useState('');
+    const [quizChoices,setQuizChoices] = useState([]);
+    const handleSubmit = () => {
+        const datax = [];
+        datax.push({answerText:nameA,correct:0});
+        datax.push({answerText:nameB,correct:0});
+        datax.push({answerText:nameC,correct:0});
+        datax.push({answerText:nameD,correct:0});
+        datax[correctt].correct = 1;
+        setQuizChoices([datax])
+        var data = {
+            questionText: questionText,
+            answerQuiz : answerQuiz,
+            quizChoices: quizChoices[0]
+        }
 
-    const [quizChoices,setQuizChoices] = useState([])
+        axios.post('https://quiz-demo-eng.herokuapp.com/quiz',data)
+        .then(res => console.log(res))
+        
+    }
 
     // onChange = (e) => {}
     return (
@@ -12,45 +35,45 @@ export default function CreateQues() {
             <form>
         <label>
             title:
-            <textarea type="text" name="nameTitle" style={{color:'black',width:900}} />
+            <textarea type="text" name="nameTitle" style={{color:'black',width:900}} onChange={(e) => setQuestionText(e.target.value)}   />
         </label>
         <label>
             Đáp án A:
-            <input type="text" name="nameA" style={{color:'black'}} />
+            <input type="text" name="nameA" style={{color:'black'}} value={nameA} onChange={(e) => setNameA(e.target.value)} />
         </label>
         <br/>
         <label>
             Đáp án B:
-            <input type="text" name="nameB" style={{color:'black'}} />
+            <input type="text" name="nameB" style={{color:'black'}} value={nameB} onChange={(e) => setNameB(e.target.value)} />
         </label>
         <br/>
 
         <label>
             Đáp án C:
-            <input type="text" name="nameC" style={{color:'black'}} />
+            <input type="text" name="nameC" style={{color:'black'}} value={nameC} onChange={(e) => setNameC(e.target.value)}/>
         </label>
         <br/>
 
         <label>
 
             Đáp án D:
-            <input type="text" name="nameD" style={{color:'black'}} />
+            <input type="text" name="nameD" style={{color:'black'}} value={nameD} onChange={(e) => setNameD(e.target.value)}/>
         </label>
         <br/>
         <label>
 
             Đáp án đúng(1,2,3,4):
-            <input type="text" name="nameAns" style={{color:'black'}} />
+            <input type="text" name="nameAns" style={{color:'black'}} onChange={(e) => setCorrectt(e.target.value)}/>
         </label>
         <br/>
         <label>
 
             Giải Thích:
-            <textarea type="text" name="name" style={{color:'black',width:500}} />
+            <textarea type="text" name="name" style={{color:'black',width:500}}  onChange={(e) => setAnswerQuiz(e.target.value)} />
         </label>
         <br/>
 
-        <input type="submit" value="Submit" style={{color:'black'}}/>
+        <button type='button' onClick={() => handleSubmit()}/>
         </form>
 
         </div>
