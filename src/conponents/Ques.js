@@ -14,7 +14,9 @@ export default function Ques() {
 		{
 			questionText:'',
 			answerQuiz:'',
-			quizChoices:[],
+			quizChoices:[
+				{ answerText: 'test', correct: false },
+			],
 		},
 		// {
 		// 	questionText: 'What is the capital of France?',
