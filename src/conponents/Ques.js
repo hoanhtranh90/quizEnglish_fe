@@ -134,7 +134,7 @@ export default function Ques() {
 						<div className='question-text' >
 							{questions[currentQuestion].questionText}
 							{active ? (
-							<div style={{position:"absolute",top:100,color:'green'}}>{questions[currentQuestion].answerQuiz}</div>
+							<div style={{position:"absolute",top:200,color:'green'}}>{questions[currentQuestion].answerQuiz}</div>
 						):(
 							<div></div>
 						)}
