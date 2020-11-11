@@ -30,6 +30,7 @@ export default function CreateQues() {
         }
         // console.log(correctt)
         // console.log(data)
+        // axios.post('https://quiz-demo-eng.herokuapp.com/quiz',data)
         axios.post('https://quiz-demo-eng.herokuapp.com/quiz',data)
         .then(res => {
             // console.log(res)

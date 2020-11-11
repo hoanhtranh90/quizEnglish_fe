@@ -81,18 +81,19 @@ export default function Ques() {
 		if (correct) {
 			setScore(score + 1);
 		}
-		setTimeout(() => {
-			setActive(false)
-			const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < questions.length) {
-			setCurrentQuestion(nextQuestion);
-		} else {
-			setShowScore(true);
-		}
-		}, 1500);
+		
+		// setActive(false)
+		// const nextQuestion = currentQuestion + 1;
+		// if (nextQuestion < questions.length) {
+		// 	setCurrentQuestion(nextQuestion);
+		// } else {
+		// 	setShowScore(true);
+		// }
+		
 		setActive(true)
 	};
 	const nextQ = () => {
+		setActive(false)
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < questions.length) {
 			setCurrentQuestion(nextQuestion);
@@ -100,6 +101,7 @@ export default function Ques() {
 			setShowScore(true);
 		}
 	}
+
 	useEffect( () => {
 		axios.get("https://quiz-demo-eng.herokuapp.com/quiz")
 		.then( res => {
@@ -122,7 +124,12 @@ export default function Ques() {
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{questions.length}
+							<button
+							 style={{width:100,position:'absolute', left:200}}
+							 onClick={() => nextQ()}
+							 >Next</button>
+
+							<span style={{position:'relative'}}>Question {currentQuestion + 1}</span>/{questions.length}
 						</div>
 						<div className='question-text' >
 							{questions[currentQuestion].questionText}
