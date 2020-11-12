@@ -20,12 +20,13 @@ export default function CreateQues() {
     }
     const handleSubmit = () => {
         pushdata();
+        // console.log(answerQuiz.split('\n').join('<br />'))
         // setQuizChoices([datax1])
         // console.log(datax1)
         datax1[correctt-1].correct = 1;
         var data = {
             questionText: questionText,
-            answerQuiz : answerQuiz,
+            answerQuiz : answerQuiz.split('\n').join('<br />'),
             quizChoices: datax1
         }
         // console.log(correctt)
