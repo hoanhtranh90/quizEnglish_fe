@@ -1,13 +1,5 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Link,
-	useRouteMatch,
-	useParams
-  } from "react-router-dom";
 
 export default function Ques() {
 	const [questions,setQuestions] = useState([
@@ -125,7 +117,7 @@ export default function Ques() {
 					<div className='question-section'>
 						<div className='question-count'>
 							<button
-							 style={{width:100,position:'absolute', left:200}}
+							 style={{width:100,position:'absolute', left:200,background:'none'}}
 							 onClick={() => nextQ()}
 							 >Next</button>
 
@@ -145,6 +137,7 @@ export default function Ques() {
 						{questions[currentQuestion].quizChoices.map((answerOption) => (
 							<button 
 							onClick={() => handleAnswerOptionClick(answerOption.correct)}
+							// className={!answerOption.correct && active ? "false":nullƯ
 							className={answerOption.correct && active ? "active":null}
 							>{answerOption.answerText}</button>
 						))}

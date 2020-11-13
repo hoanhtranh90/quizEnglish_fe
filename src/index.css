@@ -101,11 +101,17 @@ button {
 button:hover {
   background-color: #555e7d;
 }
-button:active {
-  background-color: green;
+button:focus {
+  background-color: red;
+  transition: 1s;
 }
+
+
 .active {
-  background-color: green;
+  background-color: green !important;
+}
+.false {
+  background-color: red;
 }
 
 button:focus {
