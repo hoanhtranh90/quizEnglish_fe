@@ -125,8 +125,12 @@ export default function Ques() {
 						</div>
 						<div className='question-text' >
 							{questions[currentQuestion].questionText}
+							<br/>
+							<br/>
+							<br/>
 							{active ? (
-							<div style={{position:"absolute",top:200,color:'green'}} dangerouslySetInnerHTML={{__html:questions[currentQuestion].answerQuiz}}></div>
+								
+							<div style={{position:"absolute",color:'green'}} dangerouslySetInnerHTML={{__html:questions[currentQuestion].answerQuiz}}></div>
 						):(
 							<div></div>
 						)}
