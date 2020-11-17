@@ -1,25 +1,88 @@
-import React from 'react';
-import Ques from './conponents/Ques'
-import CreateQues from './conponents/CreateQues'
+import React ,{useEffect} from 'react';
+import Ques from './conponents/Ques/Ques'
+import CreateQues from './conponents/Ques/CreateQues'
+import { connect } from "react-redux";
+
+
+import FastVocab from './conponents/Vocab/FastVocab'
+import CreateVocab from './conponents/Vocab/CreateVocab'
+import TopicVocab from './conponents/Vocab/TopicVocab'
+
+import Navb from './conponents/Navbar'
+
+import axios from 'axios'
+
+import Login from './conponents/Login/Login'
+import Register from './conponents/Login/Register'
 import {
-	BrowserRouter as Router,
+	BrowserRouter,
 	Switch,
 	Route,
-  } from "react-router-dom";
+} from "react-router-dom";
 
-export default function App() {
-	return(
-		<Router>
-		<div>
-		  <Switch>
-			<Route path="/CreateQues">
-			  <CreateQues/>
-			</Route>
-			<Route path="/">
-			  <Ques />
-			</Route>
-		  </Switch>
-		</div>
-	  </Router>
+
+const App = (props) => {
+	useEffect(() => {
+		if(localStorage.getItem('token')!=null){
+			let url = 'https://quiz-demo-eng.herokuapp.com/user/' + localStorage.getItem('id')
+			axios.get(url)
+			.then(res => {
+				console.log(res.data)
+				props.refresh(res.data)})
+		}
+	  });
+	return (
+		// <Register/>
+		<BrowserRouter>
+			<Navb></Navb>
+			
+			
+				<Switch>
+					<Route path="/CreateQues" component={CreateQues}/>
+					<Route path="/ques" component={Ques}  />
+					<Route path="/register" component ={Register} />
+					<Route path="/login" component ={Login} />
+					<Route path="/FastVocab" component ={FastVocab} />
+					<Route path="/CreateVocab" component ={CreateVocab} />
+					<Route path="/TopicVocab" component ={TopicVocab} />
+				</Switch>
+			
+		 </BrowserRouter>
 	)
 }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        refresh: info => {
+            dispatch({
+                type:"AUTH_REFRESH",
+                payload:info
+            })
+        }
+    }
+}
+export default connect(null, mapDispatchToProps)(App);
+
+
+/*
+"data": {
+    "user": {
+      "id": 5,
+      "username": "admin1",
+      "role": {
+        "id": 1,
+        "role": "user"
+      }
+    }
+  },
+
+  //data login
+  "user": {
+    "id": 5,
+    "username": "admin1",
+    "role": {
+      "id": 1,
+      "role": "user"
+    }
+  },
+  */

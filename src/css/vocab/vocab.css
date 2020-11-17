@@ -1,0 +1,28 @@
+#vocabulary td, #vocabulary th {
+    border: 1px solid #fff;
+    padding: 8px;
+  }
+  
+  #vocabulary tr:nth-child(even){background-color: #666161;}
+  
+  /* #vocabulary tr:hover {background-color: rgb(87, 87, 87);} */
+  
+  #vocabulary th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+  }
+  #title {
+    text-align: center;
+    font-family: arial, sans-serif;
+  }
+  
+  #vocabulary {
+    width: 850px;
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    border: 3px solid #ddd;
+  }

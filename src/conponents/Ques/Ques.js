@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
-
+import '../../css/Ques.css';
 export default function Ques() {
 	const [questions,setQuestions] = useState([
 		{
@@ -130,7 +130,7 @@ export default function Ques() {
 							<br/>
 							{active ? (
 								
-							<div style={{position:"absolute",color:'green'}} dangerouslySetInnerHTML={{__html:questions[currentQuestion].answerQuiz}}></div>
+							<div style={{position:"absolute",color:'white'}} dangerouslySetInnerHTML={{__html:questions[currentQuestion].answerQuiz}}></div>
 						):(
 							<div></div>
 						)}

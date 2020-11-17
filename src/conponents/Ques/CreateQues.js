@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
-
+import '../../css/Ques.css';
 export default function CreateQues() {
     const [nameA,setNameA] = useState('');
     const [nameB,setNameB] = useState('');
@@ -32,7 +32,7 @@ export default function CreateQues() {
         // console.log(correctt)
         // console.log(data)
         // axios.post('https://quiz-demo-eng.herokuapp.com/quiz',data)
-        axios.post('https://quiz-demo-eng.herokuapp.com/quiz',data)
+        axios.post('https://quiz-demo-eng.herokuapp.com/vocab',data)
         .then(res => {
             // console.log(res)
             alert("success")
