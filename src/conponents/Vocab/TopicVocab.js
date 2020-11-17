@@ -30,7 +30,7 @@ export default function TopicVocab() {
 
     const handleChange = (e) => {
         // console.log(e.target.value)
-        let url ="https://quiz-demo-eng.herokuapp.com/vocab"+e.target.value;
+        let url ="https://quiz-demo-eng.herokuapp.com/vocab/"+e.target.value;
         axios.get(url)
         .then((res) => setData(res.data))
     }
