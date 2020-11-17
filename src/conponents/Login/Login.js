@@ -15,7 +15,7 @@ const Login = (props) => {
             // let data = new FormData();
             // data.append('username',user)
             // data.append('password',pass)
-            axios.post('http://quiz-demo-eng.herokuapp.com/authenticate',{
+            axios.post('https://quiz-demo-eng.herokuapp.com/authenticate',{
                 username:user,
                 password:pass
             },{
